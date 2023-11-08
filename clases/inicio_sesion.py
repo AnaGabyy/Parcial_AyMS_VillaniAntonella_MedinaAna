@@ -6,12 +6,9 @@ def mostrar_interfaz_inicio_sesion():
 
     usuario_verificado = False
 
-    def validar_dni(char):
-        return char.isdigit() or char == ""
-
     # Función para verificar el usuario en la bd
     def verificar_usuario():
-        dni = entry_dni.get()
+        nombre_usuario = entry_nombre_usuario.get()
         contraseña = entry_contraseña.get()
 
         # Conexión a la bd
@@ -38,12 +35,11 @@ def mostrar_interfaz_inicio_sesion():
     root.title("Inicio de Sesión | CleanSA")
     root.config(bg="#5FB6D9")
 
-    # Etiqueta y entrada para dni
-    label_dni = tk.Label(root, text="DNI:", font=("Arial", 12), bg="#2685BF", fg="white")
-    label_dni.pack(pady=(10,0))
-    validar_comando = (root.register(validar_dni), "%S")
-    entry_dni = tk.Entry(root, font=("Arial", 12), bg="#BBE8F2", fg="black", borderwidth=2, validate="key", validatecommand=validar_comando)
-    entry_dni.pack(pady=(0,10), padx=10, ipadx=50)
+    # Etiqueta y entrada para el nombre de usuario
+    label_nombre_usuario = tk.Label(root, text="Nombre de usuario:", font=("Arial", 12), bg="#2685BF", fg="white")
+    label_nombre_usuario.pack(pady=(10,0))
+    entry_nombre_usuario = tk.Entry(root, font=("Arial", 12), bg="#BBE8F2", fg="black", borderwidth=2)
+    entry_nombre_usuario.pack(pady=(0,10), padx=10, ipadx=50)
 
     # Etiqueta y entrada para contraseña
     label_contraseña = tk.Label(root, text="Contraseña:", font=("Arial", 12), bg="#2685BF", fg="white")
