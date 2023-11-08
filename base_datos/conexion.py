@@ -6,6 +6,10 @@ class Conexion:
         self.conexion = sql.connect(cleansa)
         self.cursor = self.conexion.cursor()
 
+# Cerrar conexión ----------------------------------------------------------------------------------------------------
+    def cerrar_bd(self):
+        self.cursor.close()
+        self.conexion.close()
 
 # Creación de tablas ---------------------------------------------------------------------
     def crear_tablas(self):
@@ -137,14 +141,6 @@ class Conexion:
     def insertar_datos_etiqueta_producto(self, datos):
         self.cursor.executemany("INSERT INTO etiqueta_producto (fk_id_etiqueta, fk_id_producto) VALUES (?, ?)", datos)
         self.conexion.commit()
-
-
-
-
-    def cerrar_bd(self):
-        self.conexion.close()
-
-
 
 
 # Ejecutar ()
@@ -402,7 +398,3 @@ if __name__ == '__main__':
     # conexion.insertar_datos_producto(datos_producto)
     # conexion.insertar_datos_etiqueta(datos_etiqueta)
     # conexion.insertar_datos_etiqueta_producto(datos_etiqueta_producto)
-
-
-
-    conexion.cerrar_bd()

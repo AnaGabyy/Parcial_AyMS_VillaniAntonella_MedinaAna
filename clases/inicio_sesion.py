@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-import sqlite3
+import sqlite3 as sql
 
 def mostrar_interfaz_inicio_sesion():
 
@@ -15,11 +15,11 @@ def mostrar_interfaz_inicio_sesion():
         contraseña = entry_contraseña.get()
 
         # Conexión a la bd
-        conexion = sqlite3.connect('cleanSA_bd.db')
+        conexion = sql.connect("base_datos/cleansa.db")
         cursor = conexion.cursor()
 
         # Verificar si el usuario y la contraseña existen
-        cursor.execute('SELECT * FROM usuario JOIN ficha ON usuario.fk_id_ficha = ficha.id WHERE ficha.dni=? AND usuario.contraseña=?', (dni, contraseña))
+        cursor.execute('''SELECT * FROM usuario WHERE nombre_usuario=? AND contraseña=?''', (nombre_usuario, contraseña))
         resultado = cursor.fetchone()
 
         if resultado:
@@ -30,7 +30,7 @@ def mostrar_interfaz_inicio_sesion():
             messagebox.showerror("Error", "Usuario o contraseña incorrectos")
 
         # Cerrar conexión a la bd
-        conexion.close()
+        conexion.cerrar_bd()
 
     # Ventana de inicio de sesión
     root = tk.Tk()
