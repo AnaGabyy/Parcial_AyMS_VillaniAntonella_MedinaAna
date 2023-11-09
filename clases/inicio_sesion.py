@@ -14,7 +14,7 @@ class Inicio_Sesion:
             contrasena = entry_contrasena.get()
 
             # Conexión a la bd
-            conexion = sql.connect('cleansa.db')
+            conexion = sql.connect('base_datos/cleansa.db')
             cursor = conexion.cursor()
 
             # Verificar si el usuario y la contraseña existen
@@ -29,7 +29,7 @@ class Inicio_Sesion:
                 messagebox.showerror("Error", "Usuario o contraseña incorrectos")
 
             # Cerrar conexión a la bd
-            conexion.cerrar_bd()
+            conexion.close()
 
         # Ventana de inicio de sesión
         root = tk.Tk()
