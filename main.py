@@ -1,10 +1,13 @@
 from clases.inicio_sesion import Inicio_Sesion
-#from test.test_inicio_sesion import Test_Inicio_Sesion
+from tests.test_inicio_sesion import Test_Inicio_Sesion
 
-# Mostrar interfaz de inicio de sesión
-interfaz_inicio_sesion = Inicio_Sesion()
-interfaz_inicio_sesion.mostrar_interfaz_inicio_sesion()
+if __name__ == "__main__":
+    # Instancia de Inicio_Sesion
+    inicio_sesion = Inicio_Sesion()
 
-# Ejecutar prueba unitaria
-#test_inicio_sesion = Test_Inicio_Sesion()
-#test_inicio_sesion.test_verificar_usuario()
+    # Mostrar la interfaz de inicio de sesión
+    inicio_sesion.mostrar_interfaz_inicio_sesion()
+
+# Prueba unitaria de inicio_sesion.py
+test = Test_Inicio_Sesion()
+test.test_verificar_usuario()
